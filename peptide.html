@@ -5,6 +5,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">ACB3P2 - Peptide Details</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/3dmol@2.0.1/build/3Dmol-min.js"></script>
+    <style>
+        .structure-viewer {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .structure-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .structure-controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            justify-content: center;
+        }
+        
+        .structure-controls button {
+            padding: 0.25rem 0.75rem;
+            background: #4299e1;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        
+        .structure-controls button:hover {
+            background: #3182ce;
+        }
+        
+        .structure-legend {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        .legend-color.alpha {
+            background: #4299e1;
+        }
+        
+        .legend-color.beta {
+            background: #48bb78;
+        }
+        
+        .legend-color.coil {
+            background: #ed8936;
+        }
+        
+        .no-structure {
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+        }
+        
+        .viewer-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .viewer-tab {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: #718096;
+            transition: all 0.2s;
+        }
+        
+        .viewer-tab.active {
+            color: #4299e1;
+            border-bottom: 2px solid #4299e1;
+            margin-bottom: -2px;
+        }
+        
+        .viewer-tab:hover {
+            color: #2c5282;
+        }
+        
+        .prediction-container {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        
+        .prediction-sequence {
+            font-family: monospace;
+            font-size: 0.75rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        .helix {
+            background: #4299e1;
+            color: white;
+            padding: 0 1px;
+        }
+        
+        .sheet {
+            background: #48bb78;
+            color: white;
+            padding: 0 1px;
+        }
+        
+        .turn {
+            background: #ed8936;
+            color: white;
+            padding: 0 1px;
+        }
+        
+        .coil {
+            background: #a0aec0;
+            color: white;
+            padding: 0 1px;
+        }
+        
+        .secondary-structure-annotation {
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            color: #718096;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
